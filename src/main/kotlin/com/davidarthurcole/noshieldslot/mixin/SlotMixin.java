@@ -1,5 +1,6 @@
 package com.davidarthurcole.noshieldslot.mixin;
 
+import com.davidarthurcole.noshieldslot.NoShieldSlotMod;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.screen.slot.Slot;
@@ -26,6 +27,7 @@ public abstract class SlotMixin {
             cancellable = true
     )
     private void hideOffhandBackground(CallbackInfoReturnable<Identifier> cir) {
+        if (!NoShieldSlotMod.CONFIG.getEnabled()) return;
         if (inventory instanceof PlayerInventory && index == 40) {
             cir.setReturnValue(null);
         }

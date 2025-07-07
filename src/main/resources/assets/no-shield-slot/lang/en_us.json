@@ -1,0 +1,5 @@
+{
+  "text.autoconfig.no-shield-slot.title": "No Shield Slot",
+  "text.autoconfig.no-shield-slot.option.enabled": "Hide off-hand shield slot",
+  "text.autoconfig.no-shield-slot.option.enabled.@Tooltip": "If enabled, the shield/off-hand slot will be removed from your inventory GUI"
+}

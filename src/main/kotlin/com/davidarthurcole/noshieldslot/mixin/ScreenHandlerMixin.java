@@ -1,5 +1,6 @@
 package com.davidarthurcole.noshieldslot.mixin;
 
+import com.davidarthurcole.noshieldslot.NoShieldSlotMod;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
@@ -16,6 +17,7 @@ abstract class ScreenHandlerMixin {
             cancellable = true
     )
     private void onAddSlot(Slot slot, CallbackInfoReturnable<Slot> cir) {
+        if (!NoShieldSlotMod.CONFIG.getEnabled()) return;
         if (slot.inventory instanceof PlayerInventory && slot.getIndex() == 40) {
             cir.setReturnValue(slot);
             cir.cancel();

@@ -1,5 +1,6 @@
 package com.davidarthurcole.noshieldslot.mixin;
 
+import com.davidarthurcole.noshieldslot.NoShieldSlotMod;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Final;
@@ -19,6 +20,7 @@ public abstract class HandledScreenMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void onClinit(CallbackInfo ci) {
+        if (!NoShieldSlotMod.CONFIG.getEnabled()) return;
         BACKGROUND_TEXTURE = Identifier.of(
             "no-shield-slot",
             "textures/gui/container/inventory.png"
