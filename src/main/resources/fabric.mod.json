@@ -9,7 +9,9 @@
   "contact": {},
 
   "license": "All-Rights-Reserved",
-  "icon": "assets/no-shield-slot/icon.png",
+  "icon": "assets/no-shield-slot/no-shield-slot.png",
+
+  "environment": "client",
 
   "entrypoints": {
     "main": ["com.davidarthurcole.noshieldslot.NoShieldSlot"]

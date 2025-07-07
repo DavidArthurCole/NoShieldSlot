@@ -4,6 +4,5 @@ import net.fabricmc.api.ModInitializer
 
 class NoShieldSlot : ModInitializer {
 
-    override fun onInitialize() {
-    }
+    override fun onInitialize() { }
 }
