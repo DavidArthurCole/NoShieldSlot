@@ -4,9 +4,8 @@
   "package": "com.davidarthurcole.noshieldslot.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ScreenHandlerMixin",
-    "SlotMixin",
-    "HandledScreenMixin"
+    "HandledScreenMixin",
+    "InventoryScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -15,6 +14,6 @@
     "requireAnnotations": true
   },
   "client": [
-    "HandledScreenMixin"
+    "InventoryScreenMixin"
   ]
 }
