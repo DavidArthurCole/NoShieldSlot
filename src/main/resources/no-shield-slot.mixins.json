@@ -14,6 +14,9 @@
     "requireAnnotations": true
   },
   "client": [
-    "InventoryScreenMixin"
+    "InventoryScreenMixin",
+    "KeyBindingEntryMixin",
+    "KeyBindingMixin",
+    "MinecraftClientMixin"
   ]
 }
