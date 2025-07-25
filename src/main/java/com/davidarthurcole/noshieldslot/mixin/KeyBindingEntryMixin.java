@@ -31,9 +31,9 @@ public abstract class KeyBindingEntryMixin extends ControlsListWidget.Entry {
     @Shadow
     private ButtonWidget resetButton;
 
-    @Inject(method = "update()V", at = @At("HEAD"))
+    @Inject(method = "update", at = @At("HEAD"))
     private void onUpdateDisableButtons(CallbackInfo ci) {
-        if (NoShieldSlotMod.CONFIG.getEnabled() && NoShieldSlotMod.CONFIG.getDisableKeybind() && binding == MinecraftClient.getInstance().options.swapHandsKey) {
+        if (NoShieldSlotMod.CONFIG.getDisableKeybind() && binding == MinecraftClient.getInstance().options.swapHandsKey) {
             editButton.active = false;
             resetButton.active = false;
         }
@@ -48,7 +48,7 @@ public abstract class KeyBindingEntryMixin extends ControlsListWidget.Entry {
         index = 1
     )
     private Text onDrawKeyName(Text original) {
-        if (NoShieldSlotMod.CONFIG.getEnabled() && NoShieldSlotMod.CONFIG.getDisableKeybind() && binding == MinecraftClient.getInstance().options.swapHandsKey) {
+        if (NoShieldSlotMod.CONFIG.getDisableKeybind() && binding == MinecraftClient.getInstance().options.swapHandsKey) {
             return Text.literal(original.getString()).formatted(Formatting.GRAY, Formatting.STRIKETHROUGH);
         }
         return original;

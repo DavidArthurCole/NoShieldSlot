@@ -33,13 +33,13 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
     @Redirect(method = "drawSlotHighlightBack", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/slot/Slot;canBeHighlighted()Z"))
     private boolean canBeHighlightedBack(Slot slot) {
         if (slot.getIndex() != PlayerInventory.OFF_HAND_SLOT) return slot.canBeHighlighted();
-        return !NoShieldSlotMod.CONFIG.getEnabled();
+        return !NoShieldSlotMod.CONFIG.getHideSlot();
     }
 
     @Redirect(method = "drawSlotHighlightFront", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/slot/Slot;canBeHighlighted()Z"))
     private boolean canBeHighlightedFront(Slot slot) {
         if (slot.getIndex() != PlayerInventory.OFF_HAND_SLOT) return slot.canBeHighlighted();
-        return !NoShieldSlotMod.CONFIG.getEnabled();
+        return !NoShieldSlotMod.CONFIG.getHideSlot();
     }
 
     @Redirect(
@@ -50,7 +50,7 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
         )
     )
     private Identifier onGetBackgroundSprite(Slot slot) {
-        if (NoShieldSlotMod.CONFIG.getEnabled()
+        if (NoShieldSlotMod.CONFIG.getHideSlot()
                 && slot.inventory instanceof PlayerInventory
                 && slot.getIndex() == PlayerInventory.OFF_HAND_SLOT) {
             return null;
@@ -69,7 +69,7 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
 
     @Unique
     private static Boolean getKeybindResult(boolean vanillaResult) {
-        return (!NoShieldSlotMod.CONFIG.getEnabled() || !NoShieldSlotMod.CONFIG.getDisableKeybind()) && vanillaResult;
+        return !NoShieldSlotMod.CONFIG.getDisableKeybind() && vanillaResult;
     }
 
     @Redirect(

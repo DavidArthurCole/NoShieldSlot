@@ -2,6 +2,7 @@ package com.davidarthurcole.noshieldslot.mixin;
 
 import com.davidarthurcole.noshieldslot.NoShieldSlotMod;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.option.KeyBinding;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -16,9 +17,9 @@ public abstract class MinecraftClientMixin {
             target = "Lnet/minecraft/client/option/KeyBinding;wasPressed()Z"
         )
     )
-    private boolean redirectWasPressed(net.minecraft.client.option.KeyBinding keyBinding) {
+    private boolean redirectWasPressed(KeyBinding keyBinding) {
         // Prevent the shield slot from being toggled by the key binding
-        if (!NoShieldSlotMod.CONFIG.getEnabled() || !NoShieldSlotMod.CONFIG.getDisableKeybind() || !keyBinding.getTranslationKey().equals("key.swapOffhand")) {
+        if (!NoShieldSlotMod.CONFIG.getDisableKeybind() || !keyBinding.getTranslationKey().equals("key.swapOffhand")) {
             return keyBinding.wasPressed();
         }
         return false;

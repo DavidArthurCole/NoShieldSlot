@@ -17,7 +17,7 @@ class GuiContainerHook(guiAny: Any) {
     private val container: ScreenHandler get() = gui.screenHandler
 
     fun onMouseClick(slot: Slot?, slotId: Int, clickedButton: Int, clickType: Int, ci: CallbackInfo) {
-        if (!NoShieldSlotMod.CONFIG.enabled) return
+        if (!NoShieldSlotMod.CONFIG.hideSlot) return
         val item = container.stacks?.takeIf { it.size > slotId && slotId >= 0 }?.get(slotId)
         if (slot == null || container !is PlayerScreenHandler) return
         if (slot.index != PlayerInventory.OFF_HAND_SLOT) return

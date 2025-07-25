@@ -1,7 +1,7 @@
 {
   "text.autoconfig.no-shield-slot.title": "No Shield Slot",
-  "text.autoconfig.no-shield-slot.option.enabled": "Hide off-hand shield slot",
-  "text.autoconfig.no-shield-slot.option.enabled.@Tooltip": "If enabled, the shield/off-hand slot will be removed from your inventory GUI",
+  "text.autoconfig.no-shield-slot.option.hideSlot": "Hide off-hand shield slot",
+  "text.autoconfig.no-shield-slot.option.hideSlot.@Tooltip": "If enabled, the shield/off-hand slot will be removed from your inventory GUI",
   "text.autoconfig.no-shield-slot.option.disableKeybind": "Disable the vanilla keybind for swapping items in the off-hand slot",
   "text.autoconfig.no-shield-slot.option.disableKeybind.@Tooltip": "If enabled, the vanilla keybind will do nothing when pressed"
 }
