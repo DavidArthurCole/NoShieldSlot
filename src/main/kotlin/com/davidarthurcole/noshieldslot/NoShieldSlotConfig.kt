@@ -8,4 +8,7 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry
 class NoShieldSlotConfig : ConfigData {
     @ConfigEntry.Gui.Tooltip
     var enabled: Boolean = true
+
+    @ConfigEntry.Gui.Tooltip
+    var disableKeybind: Boolean = true
 }

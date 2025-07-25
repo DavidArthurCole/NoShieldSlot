@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.function.Function;
 
 @Mixin(InventoryScreen.class)
-abstract class InventoryScreenMixin {
+public abstract class InventoryScreenMixin {
     @Unique
     private static final Identifier NSS_BACKGROUND_TEXTURE = Identifier.of(
     "no-shield-slot",
