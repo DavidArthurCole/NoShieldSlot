@@ -19,7 +19,7 @@ public abstract class KeyBindingMixin {
     )
     private void onGetBoundKeyLocalizedText(CallbackInfoReturnable<Text> cir) {
         KeyBinding self = (KeyBinding)(Object)this;
-        if (NoShieldSlotMod.CONFIG.getDisableKeybind() && self == MinecraftClient.getInstance().options.swapHandsKey) {
+        if (NoShieldSlotMod.CONFIG.getEnabled() && NoShieldSlotMod.CONFIG.getDisableKeybind() && self == MinecraftClient.getInstance().options.swapHandsKey) {
             cir.setReturnValue(Text.literal("—").formatted(Formatting.GRAY));
         }
     }
