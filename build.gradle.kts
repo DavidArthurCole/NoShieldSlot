@@ -18,8 +18,6 @@ sourceSets {
     named("main") {
         java {
             srcDir("src/main/java")
-        }
-        kotlin {
             srcDir("src/main/kotlin")
         }
     }
