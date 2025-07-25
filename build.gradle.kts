@@ -101,6 +101,10 @@ tasks.jar {
     }
 }
 
+tasks.named<Jar>("sourcesJar") {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
 // configure the maven publication
 publishing {
     publications {
