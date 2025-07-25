@@ -1,7 +1,7 @@
 package com.davidarthurcole.noshieldslot.mixin;
 
 import com.davidarthurcole.noshieldslot.NoShieldSlotMod;
-import com.davidarthurcole.noshieldslot.hook.GuiContainerHook;
+import com.davidarthurcole.noshieldslot.hooks.GuiContainerHook;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.option.KeyBinding;

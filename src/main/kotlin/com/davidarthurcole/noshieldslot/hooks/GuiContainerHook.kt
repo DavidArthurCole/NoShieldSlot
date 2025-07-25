@@ -1,4 +1,4 @@
-package com.davidarthurcole.noshieldslot.hook
+package com.davidarthurcole.noshieldslot.hooks
 
 import net.minecraft.client.gui.screen.ingame.HandledScreen
 import net.minecraft.entity.player.PlayerInventory
