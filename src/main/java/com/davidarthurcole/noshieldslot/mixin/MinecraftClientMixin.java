@@ -19,7 +19,7 @@ public abstract class MinecraftClientMixin {
     )
     private boolean redirectWasPressed(KeyBinding keyBinding) {
         // Prevent the shield slot from being toggled by the key binding
-        if (!NoShieldSlotMod.CONFIG.getDisableKeybind() || !keyBinding.getTranslationKey().equals("key.swapOffhand")) {
+        if (!NoShieldSlotMod.CONFIG.getDisableKeybind() || !keyBinding.getBoundKeyTranslationKey().equals("key.swapOffhand")) {
             return keyBinding.wasPressed();
         }
         return false;

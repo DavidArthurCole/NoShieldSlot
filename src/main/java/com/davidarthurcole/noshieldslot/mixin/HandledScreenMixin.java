@@ -2,8 +2,10 @@ package com.davidarthurcole.noshieldslot.mixin;
 
 import com.davidarthurcole.noshieldslot.NoShieldSlotMod;
 import com.davidarthurcole.noshieldslot.hooks.GuiContainerHook;
+import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.ScreenHandler;
@@ -73,26 +75,26 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
     }
 
     @Redirect(
-        method = "onMouseClick(I)V",
+        method = "onMouseClick(Lnet/minecraft/client/gui/Click;)V",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/option/KeyBinding;matchesMouse(I)Z"
+            target = "Lnet/minecraft/client/option/KeyBinding;matchesMouse(Lnet/minecraft/client/gui/Click;)Z"
         )
     )
-    private boolean onMouseClick(KeyBinding instance, int code) {
+    private boolean onMouseClick(KeyBinding instance, Click click) {
         assert this.client != null;
-        return getKeybindResult(instance.matchesMouse(code));
+        return getKeybindResult(instance.matchesMouse(click));
     }
 
     @Redirect(
         method = "handleHotbarKeyPressed",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/option/KeyBinding;matchesKey(II)Z"
+            target = "Lnet/minecraft/client/option/KeyBinding;matchesKey(Lnet/minecraft/client/input/KeyInput;)Z"
         )
     )
-    private boolean onHotbarKeyPressed(KeyBinding instance, int keyCode, int scanCode) {
+    private boolean onHotbarKeyPressed(KeyBinding instance, KeyInput keyInput) {
         assert this.client != null;
-        return getKeybindResult(instance.matchesKey(keyCode, scanCode));
+        return getKeybindResult(instance.matchesKey(keyInput));
     }
 }
