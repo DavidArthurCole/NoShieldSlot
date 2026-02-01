@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "2.2.0"
-    id("dev.architectury.loom") version "1.10-SNAPSHOT"
+    kotlin("jvm") version "2.3.0"
+    id("dev.architectury.loom") version "1.13.467"
     id("maven-publish")
 }
 
@@ -62,7 +62,7 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${project.property("loader_version")}")
     modImplementation("net.fabricmc:fabric-language-kotlin:${project.property("kotlin_loader_version")}")
 
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_api_version")}")
 
     modApi("me.shedaniel.cloth:cloth-config-fabric:${project.property("cloth_config_version")}")
     modApi("com.terraformersmc:modmenu:${project.property("modmenu_version")}")
