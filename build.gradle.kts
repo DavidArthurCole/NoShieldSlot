@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "2.3.0"
-    id("dev.architectury.loom") version "1.13.467"
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.architectury.loom)
     id("maven-publish")
 }
 
@@ -23,7 +23,7 @@ sourceSets {
     }
 }
 
-val targetJavaVersion = 21
+val targetJavaVersion = libs.versions.java.get().toInt()
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
@@ -56,29 +56,31 @@ repositories {
 }
 
 dependencies {
-    // To change the versions see the gradle.properties file
-    minecraft("com.mojang:minecraft:${project.property("minecraft_version")}")
-    mappings("net.fabricmc:yarn:${project.property("yarn_mappings")}:v2")
-    modImplementation("net.fabricmc:fabric-loader:${project.property("loader_version")}")
-    modImplementation("net.fabricmc:fabric-language-kotlin:${project.property("kotlin_loader_version")}")
+    // To change the versions see the gradle/libs.versions.toml file
+    minecraft(libs.minecraft)
+    mappings(libs.yarn.mappings)
+    modImplementation(libs.fabric.loader)
+    modImplementation(libs.kotlin.loader)
 
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_api_version")}")
+    modImplementation(libs.fabric.api)
 
-    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.property("cloth_config_version")}")
-    modApi("com.terraformersmc:modmenu:${project.property("modmenu_version")}")
+    modApi(libs.cloth.config)
+    modApi(libs.modmenu)
 }
 
 tasks.processResources {
     inputs.property("version", project.version)
-    inputs.property("minecraft_version", project.property("minecraft_version"))
-    inputs.property("loader_version", project.property("loader_version"))
+    inputs.property("minecraft_version", libs.versions.minecraft.get())
+    inputs.property("loader_version", libs.versions.loader.get())
     filteringCharset = "UTF-8"
 
     filesMatching("fabric.mod.json") {
-        expand("version" to project.version,
-            "minecraft_version" to project.property("minecraft_version"),
-            "loader_version" to project.property("loader_version"),
-            "kotlin_loader_version" to project.property("kotlin_loader_version"))
+        expand(
+            "version" to project.version,
+            "minecraft_version" to libs.versions.minecraft.get(),
+            "loader_version" to libs.versions.loader.get(),
+            "kotlin_loader_version" to libs.versions.kotlin.loader.get()
+        )
     }
 }
 
